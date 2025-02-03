@@ -1,3 +1,4 @@
+//This is a triva project working with datatypes and loops
 import java.util.Scanner;
 
 public class ProjectA {
