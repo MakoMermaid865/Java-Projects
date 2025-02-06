@@ -1,7 +1,7 @@
 //This is a triva project working with datatypes and loops
 import java.util.Scanner;
 
-public class ProjectA {
+public class Triva {
     public static void main(final String[] args) throws Exception {
         final Scanner scanner = new Scanner(System.in);
     
