@@ -1,9 +1,4 @@
-
-//Ari Kinney
-//ValentineDate
-//This was made during the week of Valentine so please be nice
-
-
+//Change into a story line of muder mystery on 1/17/22
 import java.util.Scanner;
 public class Project1 {
     public static void main(String[] args) {
