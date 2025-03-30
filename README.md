@@ -5,26 +5,26 @@ This is where I will post my projects for java. My goal is to work on weekly pro
 - B Bank mangement System
 - C Calculator
 - D Database System
-E-
-F -
-G
-H - habit track
-I
-J
-K
-L
-M - money
-N
-O
-P -
-Q
-R-Religious app
-S- Story program
-T- Tik Tik Toe
-U 
-V
-W - workout planner
-X
-Y
-Z
+- E
+- F 
+- G
+- H habit track
+- I
+- J
+- K
+- L
+- M Money
+- N
+- O
+- P 
+- Q
+- R-Religious app
+- S- Story program
+- T- Tik Tik Toe
+- U 
+- V
+- W - workout planner
+- X
+- Y
+- Z
 
