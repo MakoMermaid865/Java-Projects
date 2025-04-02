@@ -65,6 +65,7 @@ public class WordScrambleGame {
      * @return random word from file
      */ //https://www.youtube.com/watch?v=1Rq_LrpcgIM&t=1s
 
+    
     public static String randomWord() {
         ArrayList<String> words = new ArrayList<>(validWords);
         return words.get((int)(Math.random() * words.size()));
