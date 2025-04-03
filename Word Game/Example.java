@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
 
-
-public class HelpProjectC {
+//this was given to finish the version of the project with help from others
+public class Example  {
     private static final String WORDS_FILE = "words.txt";
     private static String chosenWord;
     private static Set<String> validWords = new HashSet<>();
