@@ -1,10 +1,9 @@
- # Project Title
- Hunger Games
+ #  Hunger Games
  ## Project Description
  The game's purpose is to survive and overcome many challenges. The goal is to be the last player standing. Multiple players will participate, but one of the players will be an AI designed to sabotage the others and monitor them for cheating or manipulation.
  Technically players don't have to kill each other, the game will try to kill all of them!
 
-What’s needed:
+**What’s needed:**
 
 - Game concepts
 - Object-oriented programming (OOP) principles, which include:
