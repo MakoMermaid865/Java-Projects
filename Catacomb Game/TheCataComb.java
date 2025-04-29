@@ -13,7 +13,7 @@ public class TheCataComb {
      *  The Actor class represents a character in the game, either a hero or a monster.
      * It contains attributes such as name, health, maxDamage, and actorType. The
      */
-    public abstract class Actor {
+    public class Actor {
 
         // protected b/c it is a subclass of the player class
         protected String name;
@@ -44,8 +44,8 @@ public class TheCataComb {
             this.maxDamage = maxDamage;
         }
 
-        // Abstract has no body here and can implement by any subclass for hero or monster
-        public abstract int dealDamage();
+    
+        public int dealDamage();
 
     }
 
@@ -304,3 +304,11 @@ public class TheCataComb {
     }
 }
 //AI was used for run the code to following the rubric and give me a grade for the project.
+//add a feature for when no monster are around you 
+// make methods so most isn't in main
+//Cleaner code with helper methods
+//Monster memory (remove dead monsters)
+//Unique monster names
+// Optional map showing rooms
+// Extra game stats at the end
+//Replay option
