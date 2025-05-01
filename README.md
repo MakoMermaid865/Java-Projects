@@ -46,6 +46,6 @@ I will post updates **monthly** as I complete new projects. Stay tuned for progr
 ## 🤝 Get Involved!  
 If you have suggestions or ideas for future projects, feel free to reach out or contribute!  
 
-📌 Find me on **GitHub**: [Your GitHub Profile](https://github.com/your-username)  
-📌 Connect on **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)  
+📌 Find me on **GitHub**: https://github.com/MakoMermaid865
+📌 Connect on **LinkedIn**: www.linkedin.com/in/ariana-kinney-347144333  
 
