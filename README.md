@@ -24,7 +24,7 @@ Each project is themed based on a letter—some may evolve over time, and others
 - **O** – (Coming soon!)  
 - **P** – (Coming soon!)  
 - **Q** – (Coming soon!)  
-- **R** – Religious App _(Post by: January 1, 2025)_  
+- **R** – Religious App _(Post by: January 1, 2026)_  
 - **S** – Story Program _(Post by: December 1, 2025)_  
 - **T** – Tic-Tac-Toe Game _(Post by: November 1, 2025)_  
 - **U** – (Coming soon!)  
