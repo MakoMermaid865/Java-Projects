@@ -16,6 +16,12 @@
 - File input/output (File-IO) for saving and loading game status
 - 3D graphic design
 
+**Links Used**
+For Game Development
+- https://www.youtube.com/watch?v=0Yzzt1USP2w&list=PL_xRyXins848nDj2v-TJYahzvs-XW9sVV
+- https://www.youtube.com/watch?v=XeLyqELshHM&list=PLv8DnRaQOs5-ST_VDqgbbMRtzMtpK36Hy&index=1
+- https://www.youtube.com/watch?v=ZzaPdXTrSb8
+
 ## Project Guide
  ### Dependencies
  To run the code, Java and python(ai code) needs to be installed along with a coding platform like Visual Studio Code.
