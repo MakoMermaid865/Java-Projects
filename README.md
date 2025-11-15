@@ -1,4 +1,4 @@
-# 🚀 Java Projects – Monthly Challenges  
+# 🚀 Java Projects – Person project Challenges  
 
 Welcome to my Java Projects repository! My goal is to work on **monthly projects** and share my progress consistently. Throughout the year, I will tacklel these projects. Most of the projects are done in school others are side projects of mine
 
@@ -7,12 +7,6 @@ Welcome to my Java Projects repository! My goal is to work on **monthly projects
 Each project is themed based on a letter—some may evolve over time, and others are still to be determined!  
 
 - **A** – Android App _(TBD)_  
-- **B** – Bank Management System _(TBD)_  
-- **C** – Calculator _(TBD)_  
-- **D** – Database System     
-- **H** – Habit Tracker  
-- **M** – Money Management Tool _(TBD)_   
-- **R** – Religious App _(TBD)_  
 - **S** – Story Program _(TBD)_  
 - **T** – Tic-Tac-Toe Game _(TBD)_  
  
