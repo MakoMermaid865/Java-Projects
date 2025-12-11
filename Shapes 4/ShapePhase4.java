@@ -1,5 +1,5 @@
 /**
- * Aurthor: Ari Kinner
+ * Aurthor: Ari Kinney
  * Project: Shapes phase 4
  * shape program that draws shapes on a frame using serialization (ObjectOutputStream and ObjectInputStream) and Jfilechooser (to save or restore the drawings made)
  */
@@ -64,7 +64,6 @@ public class ShapePhase4 extends JFrame implements KeyListener{
             case 'r': //Restore
             case 'R':
                 loadShapes();
-                repaint();
                 break;
         }
     }
