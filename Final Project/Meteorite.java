@@ -1,6 +1,44 @@
+import java.io.Serializable;
+import java.util.Arrays;
 
+//use serializable to convert object into byte stream
+class Geolocation implements Serializable {
+    private String type;
+    private double[] coordinates; 
 
-public class Meteor {
+    // Getters
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @return the coordinates
+     */
+    public double[] getCoordinates() {
+        return coordinates;
+    }
+
+    /**
+     * @return the string representation of Geolocation
+"geolocation": { 
+"type": "Point", 
+"coordinates": [ 
+6.08333, 
+50.775 
+] 
+     */
+    @Override
+    public String toString() {  
+        return "Geolocation { type = " + type + " , coordinates = [ " + Arrays.toString(coordinates) + "]";
+    }
+
+    
+}
+
+public class Meteorite {
     
 /**
  * This is the outline to follow
@@ -23,14 +61,14 @@ public class Meteor {
  */
 
 private String name;
-private Integer id;
+private String id;
 private String nametype;
 private String recclass;
-private double mass; //can be 21 integer or 21.5 double best to use double
+private String mass; 
 private String fall;
 private String year;
-private double reclat;
-private double reclong;
+private String reclat;
+private String reclong;
 private Geolocation geolocation; 
 
 // Getters
@@ -45,7 +83,7 @@ public String getName() {
 /**
  * @return the id
  */
-public Integer getID() {
+public String getID() {
     return id;
 }
 
@@ -66,7 +104,7 @@ public String getRecclass() {
 /**
  * @return the mass
  */
-public double getMass() {
+public String getMass() {
     return mass;
 }
 
@@ -87,14 +125,14 @@ public String getYear() {
 /**
  * @return the reclat
  */
-public double getReclat() {
+public String getReclat() {
     return reclat;
 }
 
 /**
  * @return the reclong
  */
-public double getReclong() {
+public String getReclong() {
     return reclong;
 }
 
@@ -106,16 +144,22 @@ public Geolocation getGeolocation() {
 }
 
 // mass as a double
+/**
+ * @return mass as double
+ */
 public double getMassDouble() {
-    // mass is already stored as a double
-    return mass;
-}
+try {
+        return Double.parseDouble(mass);
+    } catch (Exception e) {
+        return 0.0;
+     } // or handle the error as needed
+    }
 
 //year as an integer
+/**
+ * @return year as integer
+ */
 public int getYearInt() {
-    if (year == null || year.isEmpty()) {
-        return 0; // or throw an exception, or handle as needed
-    }
     try {
         //"year": "1880-01-01T00:00:00.000", 
         return Integer.parseInt(year.substring(0, 4));
@@ -123,6 +167,29 @@ public int getYearInt() {
         return 0; // or handle the error as needed
     }
 }
+
+/**
+ * @return reclat as double
+ */
+public double getReclatDouble() {
+    try {
+        return Double.parseDouble(reclat);
+    } catch (NumberFormatException e) {
+        return 0.0; // or handle the error as needed
+    }
+}
+
+/**
+ * @return reclong as double
+ */
+public double getReclongDouble() {
+    try {
+        return Double.parseDouble(reclong);
+    } catch (NumberFormatException e) {
+        return 0.0; // or handle the error as needed
+    }
+}
+
 
 //display meteor info
 /**
@@ -133,18 +200,16 @@ name exists.
  */
 public String display(){
     return String.format(
-            "Name: %s\nID: %s\nNametype: %s\nRecclass: %s\nMass: %.2f\nFall: %s\nYear: %s\nReclat: %.6f\nReclong: %.6f\nGeolocation: %s",
+            "name = %s, id = %s, recclass = %s, mass = %s, year = %s",
             name,
-            id != null ? id.toString() : "null",
-            nametype,
+            id,
             recclass,
             mass,
-            fall,
-            year,
-            reclat,
-            reclong,
-            geolocation != null ? geolocation.toString() : "null");
+            (year != null && year.length() >= 4) ? year.substring(0, 4) : "N/A");
+            
 }
+
+
 //Option 2
 /**
 Display the data in the array using the Meteorite toString method so we can verify 
