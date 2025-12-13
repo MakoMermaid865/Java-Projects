@@ -1,11 +1,15 @@
 import java.io.*;
+import java.util.*;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import com.google.gson.Gson;
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Comparator;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class UserInterface {
@@ -14,9 +18,8 @@ private Meteorite[] meteorites;
 private Scanner scan = new Scanner(System.in);
 private static String DATA_FILE = "meteorites.dat";
 
-
 /**
- * go method is the main loop of the program
+ * go() method is the main loop of the program
  * main is in myMeteoror class
  */
 public void go() {
@@ -28,7 +31,7 @@ public void go() {
         choice = readInt("Enter your choice: ");
         handleUserChoice(choice);
     } while (choice != 0);
-    System.out.println("Exiting program. Goodbye!");
+    System.out.println("Program is now exiting...BYYEE!");
 }
 
 /**
@@ -85,7 +88,7 @@ private String readString(String prompt){
 
 /**
  * safeParseInt method safely parses an integer from a string
- */
+ 
 private int safeParseInt(String s){
     try {
         return Integer.parseInt(s.trim());
@@ -93,6 +96,7 @@ private int safeParseInt(String s){
         return -1; // or handle the error as needed
     }
 }
+    */
 
 /**
  * showMenue method displays the menu options
@@ -158,7 +162,7 @@ private void handleUserChoice(int choice){
     meteorites = gson.fromJson(json, Meteorite[].class);
 
     int count = (meteorites != null) ? meteorites.length : 0;
-    System.out.println(count + " meteorites loaded from " + fileName);
+    System.out.println(count + " records procceessed.");
     } catch (IOException e) {
         System.out.println("Error reading file: " + e.getMessage());
     }
@@ -174,11 +178,13 @@ if (meteorites == null || meteorites.length == 0) {
     return;
  }
     for (Meteorite m : meteorites) {
-        System.out.println(m.toString());
+        System.out.println(m.display());
     }
 }
 
-//Option 3
+/**
+ * Option 3
+ */
 private void saveToBinaryFile() {
     if (meteorites == null || meteorites.length == 0) {
         System.out.println("No meteorite data available to save. Please load data first.");
@@ -188,42 +194,50 @@ private void saveToBinaryFile() {
         oos.writeObject(meteorites);
         System.out.println("Meteorite data saved to " + DATA_FILE);
     } catch (IOException e) {
-        System.out.println("Error saving to binary file: " + e.getMessage());
+        System.out.println("Saved data could not be loaded: " + e.getMessage());
     }
 }
 
-//option 4
+/**
+ * Option 4
+ * "use streams to find the meteorite data without writing a loop"
+ */
 private void searchMeteoriteByName(){
     if (!hasData())
         return;
 
     String name = readString("Enter the name of the meteorite to search for: ");
-    for (Meteorite m : meteorites) {
-        if (m != null && m.getName() != null && m.getName().equalsIgnoreCase(name)) {
-            System.out.println(m.display());
-            return;
-        }
-    }
+    if (name.isEmpty()) return;
+
+    Arrays.stream(meteorites)
+        .filter(Objects::nonNull)
+        .filter(m -> m.getName() != null && m.getName().equalsIgnoreCase(name))
+        .findFirst()
+        .ifPresent(m -> System.out.println(m.display()));       
 }
 
-//option 5
+/**
+ * Option 5
+ * Search meteorite by ID
+ */
 private void searchMeteoriteByID(){
     if (!hasData())
         return;
 
     String id = readString("Enter the ID of the meteorite to search for: ");
-    for (Meteorite m : meteorites) {
-        if (m != null && m.getID() != null && m.getID().equals(id)) {
-            System.out.println(m.display());
-            return;
-        }
-    }
+    if (id.isEmpty()) return;
+    Arrays.stream(meteorites)
+        .filter(Objects::nonNull)
+        .filter(m -> m.getID() != null && m.getID().equals(id))
+        .findFirst()
+        .ifPresent(m -> System.out.println(m.display()));
 }
 
-//option 6
+
 /**
- * https://www.geeksforgeeks.org/java/how-to-override-compareto-method-in-java/
- * 
+ * Option 6
+ * "use streams to create a collection of the most recent meteorites sorted 
+by year. 
  */
 private void listLargestMeteorites(){
     if(!hasData())
@@ -233,37 +247,26 @@ private void listLargestMeteorites(){
         System.out.println("Please enter a positive integer.");
         return;
     }
+    List<Meteorite> result = Arrays.stream(meteorites)
+        .filter(Objects::nonNull)
+        .filter(m -> m.getMassDouble() > 0)
+        .sorted(Comparator.comparingDouble(Meteorite::getMassDouble).reversed())
+        .limit(n)
+        .collect(Collectors.toList());
 
-
-    List<Meteorite> meteoriteList = new ArrayList<>();
-    for (Meteorite m : meteorites) {
-        if (m == null) continue;
-
-        double mass = m.getMassDouble();
-        if (mass > 0) {
-            meteoriteList.add(m);
+    if (result.isEmpty()) {
+            System.out.println("No meteorites with valid mass data found.");
+            return;
         }
-    }
-    if (meteoriteList.isEmpty()) {
-        System.out.println("No meteorites with valid mass data found.");
-        return;
-    }
-
-    meteoriteList.sort(new Comparator<Meteorite>() {
-        @Override
-        public int compare(Meteorite m1, Meteorite m2) {
-            return Double.compare(m2.getMassDouble(), m1.getMassDouble());
-        }
-    });
-
-    int count = Math.min(n, meteoriteList.size());
-    for (int i = 0; i< count; i++){
-        System.out.println(meteoriteList.get(i).display());
-    }
+        result.forEach(m -> System.out.println(m.display()));
     
 }
 
-//option 7
+/**
+ * Option 7
+ * List the most recent meteorites
+ * https://www.geeksforgeeks.org/java/stream-in-java/
+ */
 private void listMostRecentMeteorites(){
     if(!hasData())
         return;
@@ -272,37 +275,24 @@ private void listMostRecentMeteorites(){
         System.out.println("Please enter a positive integer.");
         return;
     }
+    List<Meteorite> result = Arrays.stream(meteorites)
+        .filter(Objects::nonNull)
+        .filter(m -> m.getYearInt() > 0)
+        .sorted(Comparator.comparingInt(Meteorite::getYearInt).reversed())
+        .limit(n)
+        .collect(Collectors.toList());
 
-    
-    List<Meteorite> meteoriteList = new ArrayList<>();
-    for (Meteorite m : meteorites) {
-        if (m == null) continue;
-
-        int year = m.getYearInt();
-        if (year > 0) {
-            meteoriteList.add(m);
+    if (result.isEmpty()) {
+            System.out.println("No meteorites with valid year data found.");
+            return;
         }
-    }
-    if (meteoriteList.isEmpty()) {
-        System.out.println("No meteorites with valid mass data found.");
-        return;
-    }
-
-    meteoriteList.sort(new Comparator<Meteorite>() {
-        @Override
-        public int compare(Meteorite m1, Meteorite m2) {
-            return Integer.compare(m2.getYearInt(), m1.getYearInt());
-        }
-    });
-
-    int count = Math.min(n, meteoriteList.size());
-    for (int i = 0; i< count; i++){
-        System.out.println(meteoriteList.get(i).display());
-    }
+        result.forEach(m -> System.out.println(m.display()));
 }
 
 
-//option 8
+/**
+ * Option 8
+ */
 private void listMeteoritesByClass(){
     if(!hasData())
         return;
