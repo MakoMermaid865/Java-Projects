@@ -1,26 +1,14 @@
-import java.io.FileInputStream;
 import java.io.*;
-import java.util.*;
-import com.google.gson.Gson;
+import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
-import java.io.FileOutputStream;
+import com.google.gson.Gson;
+
 
 public class UserInterface {
 
-/**
-"Create a UserInterface class that has a public method named go.  The only action needed in 
-the main method is to instantiate a UserInterface object and call the go method. One of 
-the initialization steps is to read the data from a binary file created by a previous run of the 
-program.  No error message should be displayed if the file is not found, as that is expected the 
-first time the program is run."
- */
-
 private Meteorite[] meteorites;
-
-private Scanner scanner = new Scanner(System.in);
+private Scanner scan = new Scanner(System.in);
 private static String DATA_FILE = "meteorites.dat";
 
 
@@ -29,7 +17,8 @@ private static String DATA_FILE = "meteorites.dat";
  * main is in myMeteoror class
  */
 public void go() {
-    loadFromBinaryFile();
+    //loadFromBinaryFile();
+
     int choice;
     do {
         showMenue();
@@ -40,10 +29,23 @@ public void go() {
 }
 
 
-// show menue
+/**
+ * readInt method reads an integer from user input
+ */
+private int readInt(String prompt){
+    while (true) {
+        System.out.print(prompt + " ");
+        String line = scan.nextLine().trim();
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+        }
+    }
+}
 
 /**
- * 
+ * showMenue method displays the menu options
  */
 private void showMenue(){
     System.out.println();
@@ -67,29 +69,52 @@ private void showMenue(){
  * @param choice
  */
 private void handleUserChoice(int choice){
-    if (choice == 0) {
-        System.out.println("Exiting program. Goodbye!");
-    } else if (choice == 1) {
+    if (choice == 1) {
         loadFromJsonFile();
     } else if (choice == 2) {
-        displayAllMeteorites();
+        //displayAllMeteorites();
     } else if (choice == 3) {
-        saveToBinaryFile();
+        //saveToBinaryFile();
     } else if (choice == 4) {
-    loadFromBinaryFile();
+        //searchMeteoriteByName();
     } else if (choice == 5) {
-        searchMeteoriteByID();
+        //searchMeteoriteByID();
     } else if (choice == 6) {
-        ();
+        //listLargestMeteorites();
     } else if (choice == 7) {
-        listMostRecentMeteorites();
+        //listMostRecentMeteorites();
     } else if (choice == 8) {
-        listMeteoritesByClass();
+        //listMeteoritesByClass();
+    } else if (choice == 0) {
+        // Exit option handled in main loop
     } else {
         System.out.println("Invalid choice. Please try again.");
     }
 }
 
+/**
+ * Option 1
+ * https://www.geeksforgeeks.org/dsa/ternary-operator-in-programming/
+ * 
+ */
+ private void loadFromJsonFile() {
+    System.out.println("Enter the path to the JSON file (or press Enter to use default 'NASA_Meteorite.json'):");
+    String fileName = scan.nextLine().trim();
+
+    if(fileName.isEmpty()){
+        fileName = "NASA_Meteorite.json";
+    }
+    try {
+    String json = Files.readString(Path.of(fileName));
+    Gson gson = new Gson();
+    meteorites = gson.fromJson(json, Meteorite[].class);
+
+    int count = (meteorites != null) ? meteorites.length : 0;
+    System.out.println(count + " meteorites loaded from " + fileName);
+    } catch (IOException e) {
+        System.out.println("Error reading file: " + e.getMessage());
+    }
+ }
 
 /**
  * Links used:
