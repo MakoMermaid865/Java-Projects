@@ -175,7 +175,7 @@ public double getReclatDouble() {
     try {
         return Double.parseDouble(reclat);
     } catch (NumberFormatException e) {
-        return 0.0; // or handle the error as needed
+        return 0.0;
     }
 }
 
@@ -186,7 +186,7 @@ public double getReclongDouble() {
     try {
         return Double.parseDouble(reclong);
     } catch (NumberFormatException e) {
-        return 0.0; // or handle the error as needed
+        return 0.0; 
     }
 }
 
