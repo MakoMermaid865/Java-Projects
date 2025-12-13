@@ -1,3 +1,7 @@
+/**
+ * Author: Ari Kinney
+ * Project: Final Project - Meteorite Data Analysis
+ */
 
 //The is the main class for my meteor project all methods will be called from here
 public class MyMeteor {

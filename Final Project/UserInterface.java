@@ -154,7 +154,7 @@ private void handleUserChoice(int choice){
     String fileName = scan.nextLine().trim();
 
     if(fileName.isEmpty()){
-        fileName = "NASA_Meteorite.json";
+        fileName = "NASA_Meteorite/NASA_Meteorite.json";
     }
     try {
     String json = Files.readString(Path.of(fileName));
@@ -297,23 +297,18 @@ private void listMeteoritesByClass(){
     if(!hasData())
         return;
     String recclass = readString("Enter the meteorite class to list: ");
-
-    List<Meteorite> meteoriteList = new ArrayList<>();
-    for (Meteorite m : meteorites) {
-        if (m == null) continue;
-
-        if (m.getRecclass() != null && m.getRecclass().equalsIgnoreCase(recclass)) {
-            meteoriteList.add(m);
-        }
-    }
-    if (meteoriteList.isEmpty()) {
-        System.out.println("No meteorites found for class: " + recclass);
+    if(recclass.isEmpty()){
         return;
     }
-
-    for (Meteorite m : meteoriteList) {
-        System.out.println(m.display());
-    }
+    List<Meteorite> result = Arrays.stream(meteorites)
+        .filter(Objects::nonNull)
+        .filter(m -> m.getRecclass() != null && m.getRecclass().equalsIgnoreCase(recclass))
+        .collect(Collectors.toList());
+    if (result.isEmpty()) {
+            System.out.println("No meteorites found for class: " + recclass);
+            return;
+}
+    result.forEach(m -> System.out.println(m.display()));
 }
 }
 
