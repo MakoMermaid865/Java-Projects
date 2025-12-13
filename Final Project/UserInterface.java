@@ -86,17 +86,7 @@ private String readString(String prompt){
     return scan.nextLine().trim();
 }
 
-/**
- * safeParseInt method safely parses an integer from a string
- 
-private int safeParseInt(String s){
-    try {
-        return Integer.parseInt(s.trim());
-    } catch (Exception e) {
-        return -1; // or handle the error as needed
-    }
-}
-    */
+
 
 /**
  * showMenue method displays the menu options

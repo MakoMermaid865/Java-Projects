@@ -152,7 +152,7 @@ try {
         return Double.parseDouble(mass);
     } catch (Exception e) {
         return 0.0;
-     } // or handle the error as needed
+     } 
     }
 
 //year as an integer
@@ -164,7 +164,7 @@ public int getYearInt() {
         //"year": "1880-01-01T00:00:00.000", 
         return Integer.parseInt(year.substring(0, 4));
     } catch (NumberFormatException e) {
-        return 0; // or handle the error as needed
+        return 0; 
     }
 }
 
