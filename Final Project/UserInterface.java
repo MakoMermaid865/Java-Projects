@@ -72,7 +72,7 @@ private void handleUserChoice(int choice){
     if (choice == 1) {
         loadFromJsonFile();
     } else if (choice == 2) {
-        //displayAllMeteorites();
+        displayAllMeteorites();
     } else if (choice == 3) {
         //saveToBinaryFile();
     } else if (choice == 4) {
@@ -114,7 +114,24 @@ private void handleUserChoice(int choice){
     } catch (IOException e) {
         System.out.println("Error reading file: " + e.getMessage());
     }
+}
+
+/**
+ * Option 2
+ * 
+ */
+private void displayAllMeteorites(){
+if (meteorites == null || meteorites.length == 0) {
+    System.out.println("No meteorite data available. Please load data first.");
+    return;
  }
+    for (Meteorite m : meteorites) {
+        System.out.println(m.toString());
+    }
+}
+
+
+
 
 /**
  * Links used:
