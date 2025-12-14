@@ -13,7 +13,12 @@ public class StandardCardFactory {
     public static List<StandardCard> createFullDeck() {
 
         // TODO: Complete the createFullDeck method.
-        private static final String[] SUITS = { "Hearts", "Diamonds", "Clubs", "Spades" };
-
+\        List<StandardCard> deck = new ArrayList<>();
+        for (StandardCard.Suit suit : StandardCard.Suit.values()) {
+            for (StandardCard.Rank rank : StandardCard.Rank.values()) {
+                deck.add(new StandardCard(suit, rank));
+            }
+        }
+        return deck;            
     }
 }
