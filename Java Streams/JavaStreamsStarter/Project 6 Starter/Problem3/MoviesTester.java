@@ -1,9 +1,9 @@
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
-import java.util.Comparator;
+import java.util.stream.Stream;
 
 
 public class MoviesTester
@@ -37,15 +37,19 @@ public class MoviesTester
     */
    public static List<String> commonInitialWords(Stream<Movie> stream) {
       //TODO: Add your work here
-      
+      return stream
+         .map(Movie::getTitle)
+         .map(String::trim)
+         .filter(title -> !title.isEmpty())
+         .map(title -> title.split(" ")[0])
+         .collect(Collectors.groupingBy(w -> w, Collectors.counting()))
+         .entrySet().stream()
+         .sorted(
+            Comparator.<Map.Entry<String, Long>>comparingLong(e -> e.getValue()).reversed()
+            .thenComparing(e -> e.getKey()))
+         .limit(100)
+         .map(Map.Entry::getKey)
+         .collect(Collectors.toList());
+}
 
-   }
-      
-      
-      
-
-      
-      
-      
-      
 }
