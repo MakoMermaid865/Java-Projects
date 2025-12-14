@@ -1,6 +1,6 @@
 //TODO: Complete the UnoCard class
 
-public class UnoCard {
+public class UnoCard implements ICard{
     public enum Color {
         RED, 
         BLUE, 

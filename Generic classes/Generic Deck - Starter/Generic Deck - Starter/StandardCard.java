@@ -7,7 +7,7 @@ how and why we use enum types in Java.
  */
 
 
-public class StandardCard {
+public class StandardCard implements ICard {
 
     public enum Suit {
         CLUBS,

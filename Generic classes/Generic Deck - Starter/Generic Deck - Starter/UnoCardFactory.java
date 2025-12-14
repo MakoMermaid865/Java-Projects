@@ -18,7 +18,7 @@ public class UnoCardFactory {
                 for (int i = 0; i <= 9; i++) {
                     UnoCard.Value value = UnoCard.Value.values()[i];
                     deck.add(new UnoCard(color, value));
-                    if (i != 0) { // Add a second copy for numbers 1-9
+                    if (i != 0) {
                         deck.add(new UnoCard(color, value));
                     }
                 }
@@ -27,8 +27,8 @@ public class UnoCardFactory {
                 deck.add(new UnoCard(color, UnoCard.Value.REVERSE));
                 deck.add(new UnoCard(color, UnoCard.Value.DRAW_TWO));
 
-                return deck;
             }
         }
+        return deck;
 }
 }
