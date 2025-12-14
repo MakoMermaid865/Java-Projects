@@ -22,7 +22,7 @@ public class Deck<T extends ICard> {
     }
 
     /**
-     * shuffle the deck of cards.
+     * shuffle the deck of cards randomly
      */
     public void shuffle() {
         Collections.shuffle(cards, random);
@@ -41,14 +41,14 @@ public class Deck<T extends ICard> {
         for (int i = 0; i < numberOfCards; i++) {
             T card = cards.remove(0);
             hand.add(card);
-            dealtCards.add(card);
         }
         return hand;
     }
 
     /**
-     * Draw a single card from the deck.
-     * @return NoSuchElementException if the deck is empty.
+     * draw a single card from the deck
+     * @return the drawn card
+     * @throws NoSuchElementException if the deck is empty
      */
     public T draw() {
         if (cards.isEmpty()) {
@@ -71,7 +71,7 @@ public class Deck<T extends ICard> {
      * Reset the deck to its original state by returning all dealt cards
      * back to the deck and shuffling it.
      */
-    public void resetDeck() {
+    public void reset() {
         cards = new ArrayList<>(dealtCards);
         shuffle();
     }

@@ -23,10 +23,11 @@ public class Main {
      * https://www.youtube.com/watch?v=H9vc4gTtGGA
      * https://www.geeksforgeeks.org/java/different-ways-create-objects-java/
      * 
-     * @param <T>
-     * @param cardList
-     * @param desprition
-     * @param handSize
+     * Test the deck of card 
+     * @param <T> card implements the ICard
+     * @param cardList list of card used
+     * @param desprition of the deck
+     * @param handSize number of card to deal 
      */
     private static <T extends ICard> void testDeck(List<T> cardList, String description, int handSize){
     Deck<T> deck = new Deck<>(cardList, description);

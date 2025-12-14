@@ -1,5 +1,8 @@
 //TODO: Complete the UnoCard class
 
+/**
+ * Each card will have a color and value showing the cards used in Uno
+ */
 public class UnoCard implements ICard{
     public enum Color {
         RED, 
@@ -30,9 +33,9 @@ public class UnoCard implements ICard{
     private final Value value;
 
     /**
-     * 
-     * @param color
-     * @param value
+     * Uno card with color and value
+     * @param color of card
+     * @param value of card
      */
     public UnoCard(Color color, Value value) {
         this.color = color;
@@ -41,21 +44,23 @@ public class UnoCard implements ICard{
 
 
     /**
-     * 
-     * @return color
+     * @return color of card
      */
     public Color getColor() {
         return color;
     }
 
     /**
-     * 
-     * @return
+     * @return value of card
      */
     public Value getValue() {
         return value;
     }
     @Override
+    
+    /**
+     * @return desciption of card
+     */
     public String display() {
         return color + " " + value;
     }
