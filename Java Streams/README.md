@@ -21,9 +21,9 @@ The stream:
 - Optionally runs as a parallel stream
 
 How to run (from the `Problem1` directory):
-```bash
 javac StreamUtil.java ParallelOddsDemo.java
 java ParallelOddsDemo
+
 
 ## Problem 2: Word Properties Using Streams
 
@@ -40,7 +40,6 @@ Description:
 - All results are compared against expected outputs provided by the tester
 
 ### How to run (from the Problem2 directory):
-```bash
 javac Words.java WordsTester.java
 java WordsTester
 
@@ -61,6 +60,5 @@ This problem analyzes a dataset of movie titles to determine the most common sta
 - The output is validated using expected results provided in MoviesTester.
 
 ### How to run (from the Problem3 directory):
-```bash
 javac Movie.java Movies.java MoviesTester.java
 java MoviesTester
