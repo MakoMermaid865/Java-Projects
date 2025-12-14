@@ -21,8 +21,8 @@ The stream:
 - Optionally runs as a parallel stream
 
 How to run (from the `Problem1` directory):
-javac StreamUtil.java ParallelOddsDemo.java
-java ParallelOddsDemo
+- `javac StreamUtil.java ParallelOddsDemo.java`
+- `java ParallelOddsDemo`
 
 
 ## Problem 2: Word Properties Using Streams
@@ -40,8 +40,8 @@ Description:
 - All results are compared against expected outputs provided by the tester
 
 ### How to run (from the Problem2 directory):
-javac Words.java WordsTester.java
-java WordsTester
+- `javac Words.java WordsTester.java`
+- `java WordsTester`
 
 ## Problem 3: Most Common Initial Words in Movie Titles
 
@@ -60,5 +60,5 @@ This problem analyzes a dataset of movie titles to determine the most common sta
 - The output is validated using expected results provided in MoviesTester.
 
 ### How to run (from the Problem3 directory):
-javac Movie.java Movies.java MoviesTester.java
-java MoviesTester
+- `javac Movie.java Movies.java MoviesTester.java`
+- `MoviesTester`
