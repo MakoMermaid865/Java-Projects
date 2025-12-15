@@ -1,3 +1,8 @@
+/**
+ * Author: Ari Kinney
+ * Project 9 Generic classes
+ */
+
 import java.util.List;
 
 public class Main {
